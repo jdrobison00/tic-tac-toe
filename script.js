@@ -46,7 +46,8 @@ function game() {
     const xPlayer = new Player("x");
     const oPlayer = new Player("o");
     let gameOver = false;
-    let turn = xPlayer;
+    let turnPlayer = xPlayer;
+    let turnNumber = 0;
 
     function playRound(player) {
         let isValid = false;
@@ -65,16 +66,21 @@ function game() {
             gameOver = true;
             console.log(`${player.marker} wins!`);
         }
+        turnNumber += 1;
     }
 
     function playGame() {
         gameboard.displayBoard();
-        while (gameOver == false) {
-            playRound(turn);
-            if (turn == xPlayer) {
-                turn = oPlayer;
+        while (gameOver == false && turnNumber <= 8) {
+            playRound(turnPlayer);
+            if (turnPlayer == xPlayer) {
+                turnPlayer = oPlayer;
             } else {
-                turn = xPlayer;
+                turnPlayer = xPlayer;
+            }
+
+            if (turnNumber == 9) {
+                console.log("Draw!");
             }
         }
     }
