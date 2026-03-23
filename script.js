@@ -8,7 +8,7 @@ function createBoard() {
     }
 
     function checkIfEmpty(location) {
-        if(gameboard[location] == 'x' || gameboard[location == 'o']) {
+        if(gameboard[location] == 'x' || gameboard[location] == 'o') {
             return false;
         } else {
             return true;
@@ -37,8 +37,8 @@ function createBoard() {
     return {displayBoard, placeMarker, checkIfWon, checkIfEmpty};
 }
 
-const Player = function(marker) {
-    this.marker = marker;
+function Player(marker) {
+    return {marker}
 }
 
 function game() {
@@ -88,4 +88,4 @@ function game() {
     return {playGame};
 }
 
-const game1 = game();
+let game1 = game();
